@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MockServer
 {
-    internal class Program
+    public class Program
     {
 
         /// <summary>

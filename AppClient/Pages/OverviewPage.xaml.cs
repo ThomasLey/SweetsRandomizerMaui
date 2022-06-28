@@ -1,5 +1,5 @@
-﻿using AppClient.Provider;
-using Device = AppClient.Model.Device;
+﻿using AppClient.DataStore;
+using ModuleInfo = AppClient.DataStore.ModuleInfo;
 
 namespace AppClient.Pages
 {
@@ -10,13 +10,8 @@ namespace AppClient.Pages
         {
             InitializeComponent();
 
-            // TODO: Change
-            LoadDevices(new MockDeviceProvider());
-        }
-
-        private void LoadDevices(IDeviceProvider provider)
-        {
-            foreach (Device device in provider.GetDevices())
+            // Load devices
+            foreach (ModuleInfo device in ModuleStore.Modules)
             {
                 Button deviceButton = new Button
                 {
@@ -28,9 +23,9 @@ namespace AppClient.Pages
 
                 deviceButton.ImageSource = device.ConnectionStatus switch
                 {
-                    Model.ConnectionStatus.Online => (ImageSource)"status_online.svg",
-                    Model.ConnectionStatus.CheckConnection => (ImageSource)"status_check.svg",
-                    Model.ConnectionStatus.Offline => (ImageSource)"status_offline.svg",
+                    ConnectionStatus.Online => (ImageSource)"status_online.svg",
+                    ConnectionStatus.CheckConnection => (ImageSource)"status_check.svg",
+                    ConnectionStatus.Offline => (ImageSource)"status_offline.svg",
                     _ => throw new NotImplementedException()
                 };
 
@@ -38,5 +33,9 @@ namespace AppClient.Pages
             }
         }
 
+        private void ButtonAddDevice_Clicked(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new AddModulePage();
+        }
     }
 }

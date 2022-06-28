@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MockServer.Routes
 {
-    internal class LeinwandRoute
+    public class LeinwandRoute
     {
 
         private static readonly Random RANDOM = new Random();

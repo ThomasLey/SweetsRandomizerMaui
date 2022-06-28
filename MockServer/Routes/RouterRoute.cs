@@ -2,7 +2,7 @@
 
 namespace MockServer.Routes
 {
-    internal class RouterRoute
+    public class RouterRoute
     {
 
         public static string HandleContext(HttpListenerContext context)

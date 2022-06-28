@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MockServer.Routes
 {
-    internal class SchrankRoute
+    public class SchrankRoute
     {
 
         private static readonly Random RANDOM = new Random();

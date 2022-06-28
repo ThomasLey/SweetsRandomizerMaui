@@ -4,7 +4,7 @@ using System;
 
 namespace AppClient
 {
-    internal class Program : MauiApplication
+    public class Program : MauiApplication
     {
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 
