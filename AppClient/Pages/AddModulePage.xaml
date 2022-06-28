@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppClient.Pages.AddModulePage"
+             Title="Gerät hinzufügen">
+    <VerticalStackLayout>
+        <Entry x:Name="Devicename"
+       Placeholder="Gerätenamen eingeben"/>
+        <Entry x:Name="URL"
+       Placeholder="URL"/>
+        <Picker x:Name="picker"
+        Title="Typ auswählen">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>SegmentedLights</x:String>
+                    <x:String>SpinningLights</x:String>
+                    <x:String>Other</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Entry x:Name="Describtion"
+       Placeholder="Beschreibung "/>
+        <HorizontalStackLayout>
+            <Button Text="Abbrechen"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Button Text="Speichern"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+
+</ContentPage>
