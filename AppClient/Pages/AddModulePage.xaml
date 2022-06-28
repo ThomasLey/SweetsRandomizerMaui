@@ -3,12 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppClient.Pages.AddModulePage"
              Title="Gerät hinzufügen">
-    <VerticalStackLayout>
-        <Entry x:Name="Devicename"
+    <Grid 
+        Margin="10"
+        RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="45" />
+            <RowDefinition Height="45" />
+            <RowDefinition />
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Entry 
+            Grid.Row="0"
+            Grid.Column="0"
+            x:Name="Devicename"
        Placeholder="Gerätenamen eingeben"/>
-        <Entry x:Name="URL"
+        <Entry 
+            Grid.Row="1"
+            Grid.Column="0"
+            x:Name="URL"
        Placeholder="URL"/>
-        <Picker x:Name="picker"
+        <Picker   
+            Grid.Row="2"
+            Grid.Column="0"
+            x:Name="picker"
         Title="Typ auswählen">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -18,16 +36,28 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-        <Entry x:Name="Describtion"
+        <Entry 
+            Grid.Row="3"
+            Grid.Column="0"
+            x:Name="Describtion"
        Placeholder="Beschreibung "/>
-        <HorizontalStackLayout>
-            <Button Text="Abbrechen"
+        <HorizontalStackLayout            
+            Grid.Row="4"
+            Grid.Column="0"
+            >
+            
+            
+            <Button 
+
+                Text="Abbrechen"
                 VerticalOptions="Center"
                 HorizontalOptions="Center" />
-            <Button Text="Speichern"
+            <Button 
+
+                Text="Speichern"
                 VerticalOptions="Center"
                 HorizontalOptions="Center"/>
         </HorizontalStackLayout>
-    </VerticalStackLayout>
+    </Grid>
 
 </ContentPage>
