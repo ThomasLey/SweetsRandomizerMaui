@@ -21,6 +21,7 @@ namespace AppClient.Pages
                     )
                 };
 
+                deviceButton.Clicked += (s, e) => ButtonDevice_Clicked(device);
                 deviceButton.ImageSource = device.ConnectionStatus switch
                 {
                     ConnectionStatus.Online => (ImageSource)"status_online.svg",
@@ -33,9 +34,14 @@ namespace AppClient.Pages
             }
         }
 
-        private void ButtonAddDevice_Clicked(object sender, EventArgs e)
-        {
-            Application.Current.MainPage = new AddModulePage();
+        private async void ButtonDevice_Clicked(ModuleInfo device)
+        { // Handler for device button
+            await Navigation.PushAsync(new ModuleControlPage(device));
+        }
+
+        private async void ButtonAddDevice_Clicked(object sender, EventArgs e)
+        { // Handler for add device button
+            await Navigation.PushAsync(new AddModulePage());
         }
     }
 }

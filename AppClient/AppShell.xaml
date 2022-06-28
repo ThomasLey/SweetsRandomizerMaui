@@ -9,9 +9,13 @@
     <ShellContent
         ContentTemplate="{DataTemplate local:Pages.OverviewPage}"
         Content="OverviewPage" />
-    
+
     <ShellContent
         ContentTemplate="{DataTemplate local:Pages.AddModulePage}"
         Content="AddModulePage" />
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:Pages.ModuleControlPage}"
+        Content="ModuleControlPage" />
 
 </Shell>

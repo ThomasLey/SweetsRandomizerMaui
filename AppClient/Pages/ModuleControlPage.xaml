@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppClient.Pages.ModuleControlPage"
+             Title="Gerät steuern">
+
+    <Grid 
+        Margin="10"
+        RowSpacing="5"
+        ColumnSpacing="5">
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ScrollView 
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2">
+            <VerticalStackLayout
+                Spacing="10">
+
+                <VerticalStackLayout>
+                    <Label Text="Name:"/>
+                    <Entry
+                        x:Name="ModuleNameField"
+                        Placeholder="Name" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Beschreibung:"/>
+                    <Entry
+                        x:Name="ModuleDescriptionField"
+                        Placeholder="Beschreibung" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout
+                    x:Name="ConnectionStatusField">
+                    <Label Text="Nachricht:"/>
+                    <Entry
+                        x:Name="ModuleConnectionMessage"
+                        Placeholder="Nachricht" />
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            BackgroundColor="Red"
+            Text="Entfernen"/>
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="1"
+            Text="Bearbeiten"/>
+
+        <Button
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Text="Zurück"/>
+    </Grid>
+
+</ContentPage>
