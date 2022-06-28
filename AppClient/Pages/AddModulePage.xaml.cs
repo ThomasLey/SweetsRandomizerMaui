@@ -6,4 +6,9 @@ public partial class AddModulePage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	private async void ButtonAbort_Clicked(object sender, EventArgs e)
+	{
+        await Navigation.PopAsync();
+    }
 }

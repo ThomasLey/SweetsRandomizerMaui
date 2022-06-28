@@ -5,7 +5,9 @@
              Title="Gerät hinzufügen">
     <Grid 
         Margin="10"
-        RowSpacing="10">
+        RowSpacing="10"
+        ColumnSpacing="5">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="45" />
             <RowDefinition Height="45" />
@@ -13,6 +15,12 @@
             <RowDefinition />
             <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
         <Entry 
             Grid.Row="0"
             Grid.Column="0"
@@ -40,24 +48,20 @@
             Grid.Row="3"
             Grid.Column="0"
             x:Name="Describtion"
-       Placeholder="Beschreibung "/>
-        <HorizontalStackLayout            
+            Placeholder="Beschreibung "/>
+
+        <Button 
             Grid.Row="4"
             Grid.Column="0"
-            >
-            
-            
-            <Button 
-
                 Text="Abbrechen"
-                VerticalOptions="Center"
-                HorizontalOptions="Center" />
-            <Button 
-
+             Clicked="ButtonAbort_Clicked"
+              />
+        <Button 
+              Grid.Row="4"
+            Grid.Column="1"
                 Text="Speichern"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"/>
-        </HorizontalStackLayout>
+                />
+
     </Grid>
 
 </ContentPage>
