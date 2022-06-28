@@ -2,7 +2,7 @@
 
 namespace MockServer.Routes
 {
-    internal class PiRoute
+    public class PiRoute
     {
 
         public static string HandleContext(HttpListenerContext context)

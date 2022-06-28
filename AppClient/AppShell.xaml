@@ -6,9 +6,10 @@
     xmlns:local="clr-namespace:AppClient"
     Shell.FlyoutBehavior="Disabled">
 
-    <!--<ShellContent
+    <ShellContent
         ContentTemplate="{DataTemplate local:Pages.OverviewPage}"
-        Content="OverviewPage" />-->
+        Content="OverviewPage" />
+    
     <ShellContent
         ContentTemplate="{DataTemplate local:Pages.AddModulePage}"
         Content="AddModulePage" />

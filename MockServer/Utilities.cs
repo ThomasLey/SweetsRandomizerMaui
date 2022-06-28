@@ -1,6 +1,6 @@
 ﻿namespace MockServer
 {
-    internal class Utilities
+    public class Utilities
     {
         
         /// <summary>

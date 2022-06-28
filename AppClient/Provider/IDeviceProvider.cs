@@ -1,7 +1,9 @@
-﻿namespace AppClient.Provider
+﻿using AppClient.DataStore;
+
+namespace AppClient.Provider
 {
-    internal interface IDeviceProvider
+    public interface IDeviceProvider
     {
-        Model.Device[] GetDevices();
+        ModuleInfo[] GetModules();
     }
 }

@@ -1,11 +1,11 @@
-﻿namespace AppClient.Model
+﻿namespace AppClient.DataStore
 {
-    internal class Device
+    public class ModuleInfo
     {
 
         public string Name { get; set; }
         public string Host { get; set; }
-        public DeviceType Type { get; set; }
+        public ModuleType Type { get; set; }
         public string Description { get; set; }
 
         public ConnectionStatus ConnectionStatus { get; set; }
@@ -13,12 +13,12 @@
 
     }
 
-    internal enum ConnectionStatus
+    public enum ConnectionStatus
     {
         Offline, CheckConnection, Online
     }
 
-    internal enum DeviceType
+    public enum ModuleType
     {
         SegmentedLights, SpinningLights,
         Webpage, Unknown
