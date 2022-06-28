@@ -6,38 +6,41 @@ namespace AppClient.Provider
     {
         private static async Task FillConnectionStatus(ModuleInfo[] devices)
         {
-            HttpClient client = new HttpClient();
+            using HttpClient client = new HttpClient();
+
             foreach (ModuleInfo device in devices)
             {
                 try
                 {
-                    HttpResponseMessage message = await client.GetAsync(device.Host).ConfigureAwait(false);
+                    using HttpResponseMessage message = await client.GetAsync(device.Host).ConfigureAwait(false);
+                    string response = await message.Content.ReadAsStringAsync().ConfigureAwait(false);
+
                     if (!message.IsSuccessStatusCode)
-                        device.ConnectionStatus = ConnectionStatus.Offline;
+                        throw new Exception(response);
                     else
                     {
-                        string response = await message.Content.ReadAsStringAsync().ConfigureAwait(false);
                         device.ConnectionMessage = response;
 
                         switch (device.Type)
                         { // Connection check
-                            case DataStore.ModuleType.Webpage:
+                            case ModuleType.Webpage:
                                 device.ConnectionStatus = response.StartsWith("<html>") ?
                                     ConnectionStatus.Online : ConnectionStatus.CheckConnection;
                                 break;
-                            case DataStore.ModuleType.SegmentedLights:
-                            case DataStore.ModuleType.SpinningLights:
+                            case ModuleType.SegmentedLights:
+                            case ModuleType.SpinningLights:
                                 device.ConnectionStatus = response.StartsWith("{") ?
                                     ConnectionStatus.Online : ConnectionStatus.CheckConnection;
                                 break;
-                            case DataStore.ModuleType.Unknown:
+                            case ModuleType.Unknown:
                                 throw new NotImplementedException();
                         }
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    device.ConnectionMessage = ex.Message;
+                    device.ConnectionMessage = string.IsNullOrWhiteSpace(ex.Message) ?
+                        "No Message!" : ex.Message;
                     device.ConnectionStatus = ConnectionStatus.Offline;
                 }
             }

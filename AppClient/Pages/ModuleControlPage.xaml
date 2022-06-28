@@ -12,7 +12,6 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="45"/>
-            <RowDefinition Height="45"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -27,28 +26,119 @@
             <VerticalStackLayout
                 Spacing="10">
 
+                <!-- Generic -->
                 <VerticalStackLayout>
-                    <Label Text="Name:"/>
-                    <Entry
+                    <Label Text="Name:" />
+                    <Entry 
                         x:Name="ModuleNameField"
-                        Placeholder="Name" />
+                        IsReadOnly="True" />
                 </VerticalStackLayout>
 
                 <VerticalStackLayout>
                     <Label Text="Beschreibung:"/>
                     <Entry
                         x:Name="ModuleDescriptionField"
-                        Placeholder="Beschreibung" />
+                        IsReadOnly="True"/>
                 </VerticalStackLayout>
 
+                <!-- Offline / CheckConnection -->
                 <VerticalStackLayout
-                    x:Name="ConnectionStatusField">
+                    x:Name="ConnectionStatusLayout"
+                    IsVisible="False">
                     <Label Text="Nachricht:"/>
-                    <Entry
-                        x:Name="ModuleConnectionMessage"
-                        Placeholder="Nachricht" />
+                    <Entry 
+                        x:Name="ModuleConnectionMessageField"
+                        IsReadOnly="True" />
                 </VerticalStackLayout>
 
+                <!-- Online -->
+                <Label 
+                    x:Name="NoControlLabel"
+                    IsVisible="False"
+                    Text="Keine Steuerung möglich" />
+
+                <!-- Segmented Lights -->
+                <Grid
+                    x:Name="SegmentedLightsLayout"
+                    Margin="5"
+                    IsVisible="False"
+                    RowSpacing="5"
+                    ColumnSpacing="5">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <VerticalStackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2">
+                        <Label Text="Segment ID:" />
+                        <Entry 
+                            x:Name="SegmentedSegmentIdField"
+                            Placeholder="Segment ID"
+                            Keyboard="Numeric"
+                            IsEnabled="False" />
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Grid.ColumnSpan="2">
+                        <Label Text="Farbe:" />
+                        <Entry 
+                            x:Name="SegmentedColorIdField"
+                            Placeholder="Farbe"
+                            Keyboard="Numeric"
+                            IsEnabled="False" />
+                    </VerticalStackLayout>
+
+                    <Picker 
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        x:Name="SegmentedCommandPicker"
+                        Title="Befehl: Bitte wählen"
+                        SelectedIndexChanged="SegmentedCommandPicker_SelectedIndexChanged">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Segment einschalten</x:String>
+                                <x:String>Segment exklusiv einschalten</x:String>
+                                <x:String>Auf Hintergrundfarbe setzen</x:String>
+                                <x:String>Hintergrundfarbe ändern</x:String>
+                                <x:String>Alle Segmente einschalten</x:String>
+                                <x:String>Alle Segmente ausschalten</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <Button 
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        x:Name="SendButton"
+                        Text="Senden"
+                        Clicked="SegmentedSendButton_Clicked"/>
+                </Grid>
+                
+                <!-- Spinning Lights -->
+                <Grid
+                    x:Name="SpinningLightsLayout"
+                    Margin="5"
+                    IsVisible="False"
+                    RowSpacing="5"
+                    ColumnSpacing="5">
+                    
+                    <!-- To be implemented -->
+
+                </Grid>
             </VerticalStackLayout>
         </ScrollView>
 
@@ -62,12 +152,6 @@
             Grid.Row="1"
             Grid.Column="1"
             Text="Bearbeiten"/>
-
-        <Button
-            Grid.Row="2"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Text="Zurück"/>
     </Grid>
 
 </ContentPage>
