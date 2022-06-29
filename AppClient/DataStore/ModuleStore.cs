@@ -11,7 +11,7 @@ namespace AppClient.DataStore
 #if DEBUG
         private static readonly IModuleManager ModuleManager = new MockModuleManager();
 #else
-        private static readonly IModuleManager ModuleManager = new CandyWheelModuleManager();
+        private static readonly IModuleManager ModuleManager = new StorageModuleManager();
 #endif
 
         static ModuleStore()
