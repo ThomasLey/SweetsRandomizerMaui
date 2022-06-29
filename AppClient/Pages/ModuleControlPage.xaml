@@ -304,8 +304,9 @@
             Grid.Row="1"
             Grid.Column="0"
             BackgroundColor="Red"
-            Text="Entfernen"/>
-
+            Text="Entfernen"
+            Clicked="ButtonRemove_Clicked" />
+        
         <Button
             Grid.Row="1"
             Grid.Column="1"
