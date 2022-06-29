@@ -10,68 +10,74 @@ namespace AppClient.DataStore
         static ModuleStore()
         {
             // TODO: Change Provider
-            IDeviceProvider provider = new MockDeviceProvider();
-            ModuleInfo[] devices = provider.GetDevices();
-            LoadModules(devices);
+#if DEBUG
+            IModuleProvider provider = new MockModuleProvider();
+#else
+            IModuleProvider provider = new CandyWheelModuleProvider();
+#endif
+
+            ModuleInfo[] modules = provider.GetModules();
+            LoadModules(modules);
         }
 
-        public static void LoadModules(ModuleInfo[] devices)
+        public static void LoadModules(ModuleInfo[] modules)
         {
             Modules.Clear();
-            Task.WaitAll(CheckConnectionStatus(devices));
-            Modules.AddRange(devices);
+            Task.WaitAll(CheckConnectionStatusAsync(modules));
+            Modules.AddRange(modules);
         }
 
-        public static void RegisterModule(ModuleInfo device)
+        public static void RegisterModule(ModuleInfo module)
         {
-            Task.WaitAll(CheckConnectionStatus(device));
-            Modules.Add(device);
+            Task.WaitAll(CheckConnectionStatusAsync(module));
+            Modules.Add(module);
         }
 
-        public static void UnregisterModule(ModuleInfo device)
+        public static void UnregisterModule(ModuleInfo module)
         {
-            Modules.Remove(device);
+            Modules.Remove(module);
         }
 
-        public static async Task CheckConnectionStatus(params ModuleInfo[] devices)
+        public static async Task CheckConnectionStatusAsync(params ModuleInfo[] modules)
         {
             using HttpClient client = new HttpClient();
-            client.Timeout = TimeSpan.FromSeconds(10);
+            client.Timeout = TimeSpan.FromSeconds(5);
 
-            foreach (ModuleInfo device in devices)
+            foreach (ModuleInfo module in modules)
             {
                 try
                 {
-                    using HttpResponseMessage message = await client.GetAsync(device.Host).ConfigureAwait(false);
+                    using HttpResponseMessage message = await client.GetAsync(module.Host).ConfigureAwait(false);
                     string response = await message.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                     if (!message.IsSuccessStatusCode)
                         throw new Exception(response);
                     else
                     {
-                        device.ConnectionMessage = response;
+                        module.ConnectionMessage = response;
 
-                        switch (device.Type)
+                        switch (module.Type)
                         { // Connection check
                             case ModuleType.Webpage:
-                                device.ConnectionStatus = response.StartsWith("<html>") ?
+                                module.ConnectionStatus = response.StartsWith("<html>") ?
                                     ConnectionStatus.Online : ConnectionStatus.CheckConnection;
                                 break;
                             case ModuleType.SegmentedLights:
                             case ModuleType.SpinningLights:
-                                device.ConnectionStatus = response.StartsWith("{") ?
+                                module.ConnectionStatus = response.StartsWith("{") ?
                                     ConnectionStatus.Online : ConnectionStatus.CheckConnection;
                                 break;
-                            case ModuleType.Unknown:
+
+                            default:
                                 throw new NotImplementedException();
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    device.ConnectionMessage = string.IsNullOrWhiteSpace(ex.Message) ?
+                    module.ConnectionMessage = string.IsNullOrWhiteSpace(ex.Message) ?
                         "No Message!" : ex.Message;
-                    device.ConnectionStatus = ConnectionStatus.Offline;
+                    module.ConnectionStatus = ConnectionStatus.Offline;
                 }
             }
         }

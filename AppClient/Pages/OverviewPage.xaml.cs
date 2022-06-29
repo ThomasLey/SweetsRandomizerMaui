@@ -15,20 +15,20 @@ namespace AppClient.Pages
         {
             base.OnAppearing();
 
-            // Load devices
-            DeviceListLayout.Clear();
-            foreach (ModuleInfo device in ModuleStore.Modules)
+            // Load modules
+            ModuleListLayout.Clear();
+            foreach (ModuleInfo module in ModuleStore.Modules)
             {
-                Button deviceButton = new Button
+                Button moduleButton = new Button
                 {
-                    Text = $"{device.Name} [{device.Host}]",
+                    Text = $"{module.Name} [{module.Host}]",
                     ContentLayout = new Button.ButtonContentLayout(
                         Button.ButtonContentLayout.ImagePosition.Right, 0
                     )
                 };
 
-                deviceButton.Clicked += (s, e) => ButtonDevice_Clicked(device);
-                deviceButton.ImageSource = device.ConnectionStatus switch
+                moduleButton.Clicked += (s, e) => ButtonModule_Clicked(module);
+                moduleButton.ImageSource = module.ConnectionStatus switch
                 {
                     ConnectionStatus.Online => (ImageSource)"status_online.svg",
                     ConnectionStatus.CheckConnection => (ImageSource)"status_check.svg",
@@ -36,17 +36,17 @@ namespace AppClient.Pages
                     _ => throw new NotImplementedException()
                 };
 
-                DeviceListLayout.Add(deviceButton);
+                ModuleListLayout.Add(moduleButton);
             }
         }
 
-        private async void ButtonDevice_Clicked(ModuleInfo device)
-        { // Handler for device button
-            await Navigation.PushAsync(new ModuleControlPage(device));
+        private async void ButtonModule_Clicked(ModuleInfo module)
+        { // Handler for module button
+            await Navigation.PushAsync(new ModuleControlPage(module));
         }
 
-        private async void ButtonAddDevice_Clicked(object sender, EventArgs e)
-        { // Handler for add device button
+        private async void ButtonAddModule_Clicked(object sender, EventArgs e)
+        { // Handler for add module button
             await Navigation.PushAsync(new AddModulePage());
         }
     }

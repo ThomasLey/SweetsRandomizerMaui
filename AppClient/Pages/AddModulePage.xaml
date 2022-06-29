@@ -21,7 +21,7 @@
         <VerticalStackLayout Grid.Row="0"
             Grid.Column="0" Spacing="20">
             <Entry 
-                x:Name="DeviceNameField"
+                x:Name="ModuleNameField"
                 Placeholder="Gerätenamen eingeben"/>
 
             <Entry 
@@ -36,7 +36,6 @@
                         <x:String>SegmentedLights</x:String>
                         <x:String>SpinningLights</x:String>
                         <x:String>Webpage</x:String>
-                        <x:String>Unkonwn</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>

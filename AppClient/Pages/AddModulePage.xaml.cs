@@ -22,7 +22,7 @@ public partial class AddModulePage : ContentPage
         base.OnAppearing();
         if (module == null) return;
 
-        DeviceNameField.Text = module.Name;
+        ModuleNameField.Text = module.Name;
         Host.Text = module.Host;
         Picker.SelectedIndex = (int)module.Type;
         Description.Text = module.Description;
@@ -35,8 +35,8 @@ public partial class AddModulePage : ContentPage
 
     private async void ButtonSaved_Clicked(object sender, EventArgs e)
     {
-        string devicename = DeviceNameField.Text;
-        if (string.IsNullOrWhiteSpace(devicename))
+        string moduleName = ModuleNameField.Text;
+        if (string.IsNullOrWhiteSpace(moduleName))
         { 
             await DisplayAlert("Speichern nicht möglich", "Bitte Gerätenamen eingeben", "OK");
             return; 
@@ -66,7 +66,7 @@ public partial class AddModulePage : ContentPage
         if(module == null)
             module = new ModuleInfo();
 
-        module.Name = devicename;
+        module.Name = moduleName;
         module.Description = description;
         module.Host = host;
         module.Type = (ModuleType)Picker.SelectedIndex;
@@ -74,7 +74,7 @@ public partial class AddModulePage : ContentPage
         if (notRegistered)
             ModuleStore.RegisterModule(module);
         else
-            Task.WaitAll(ModuleStore.CheckConnectionStatus(module));
+            Task.WaitAll(ModuleStore.CheckConnectionStatusAsync(module));
 
         await Navigation.PopAsync();
     }

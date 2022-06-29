@@ -17,7 +17,7 @@
             Grid.Row="0"
             Grid.Column="0">
             <StackLayout
-                x:Name="DeviceListLayout"
+                x:Name="ModuleListLayout"
                 Spacing="10">
                 
                 <!-- Added by the program -->
@@ -29,7 +29,7 @@
             Grid.Row="1"
             Grid.Column="0"
             Text="Gerät hinzufügen"
-            Clicked="ButtonAddDevice_Clicked"/>
+            Clicked="ButtonAddModule_Clicked"/>
     </Grid>
         
 </ContentPage>

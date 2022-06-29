@@ -2,9 +2,9 @@
 
 namespace AppClient.Provider
 {
-    public class MockDeviceProvider : IDeviceProvider
+    public class MockModuleProvider : IModuleProvider
     {
-        public ModuleInfo[] GetDevices()
+        public ModuleInfo[] GetModules()
         {
             return new ModuleInfo[]
             {
