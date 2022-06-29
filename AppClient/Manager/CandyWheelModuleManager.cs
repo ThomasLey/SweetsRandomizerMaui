@@ -1,49 +1,45 @@
 ﻿using AppClient.DataStore;
 
-namespace AppClient.Provider
+namespace AppClient.Manager
 {
-    public class MockModuleProvider : IModuleProvider
+    public class CandyWheelModuleManager : IModuleManager
     {
-        public ModuleInfo[] GetModules()
+        public ModuleInfo[] LoadModules()
         {
             return new ModuleInfo[]
             {
                 new ModuleInfo()
                 {
                     Name = "Router",
-                    Host = "http://10.0.2.2:8080/router",
+                    Host = "http://192.168.1.1",
                     Type = ModuleType.Webpage,
                     Description = "Der Router"
                 },
                 new ModuleInfo()
                 {
                     Name = "RaspberryPI",
-                    Host = "http://10.0.2.2:8080/pi",
+                    Host = "http://192.168.1.33",
                     Type = ModuleType.Webpage,
                     Description = "Der PI"
                 },
                 new ModuleInfo()
                 {
                     Name = "Schrank",
-                    Host = "http://10.0.2.2:8080/schrank",
+                    Host = "http://192.168.1.2",
                     Type = ModuleType.SegmentedLights,
                     Description = "Der Schrank"
                 },
                 new ModuleInfo()
                 {
                     Name = "Leinwand",
-                    Host = "http://10.0.2.2:8080/leinwand",
+                    Host = "http://192.168.1.3",
                     Type = ModuleType.SpinningLights,
                     Description = "Die Leinwand"
-                },
-                new ModuleInfo()
-                {
-                    Name = "Lollipop",
-                    Host = "http://10.0.2.2:8080/lollipop",
-                    Type = ModuleType.SegmentedLights,
-                    Description = "Die Lollipops"
                 }
             };
         }
+
+        // Do nothing
+        public void SaveModules(ICollection<ModuleInfo> modules) { }
     }
 }

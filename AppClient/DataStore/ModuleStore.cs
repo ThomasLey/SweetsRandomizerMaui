@@ -1,23 +1,22 @@
-﻿using AppClient.Provider;
+﻿using AppClient.Manager;
 
 namespace AppClient.DataStore
 {
     public static class ModuleStore
     {
 
-        public static List<ModuleInfo> Modules { get; } = new List<ModuleInfo>();
+        public static readonly List<ModuleInfo> Modules = new List<ModuleInfo>();
+
+        // TODO: Change ModuleManager
+#if DEBUG
+        private static readonly IModuleManager ModuleManager = new MockModuleManager();
+#else
+        private static readonly IModuleManager ModuleManager = new CandyWheelModuleManager();
+#endif
 
         static ModuleStore()
         {
-            // TODO: Change Provider
-#if DEBUG
-            IModuleProvider provider = new MockModuleProvider();
-#else
-            IModuleProvider provider = new CandyWheelModuleProvider();
-#endif
-
-            ModuleInfo[] modules = provider.GetModules();
-            LoadModules(modules);
+            LoadModules(ModuleManager.LoadModules());
         }
 
         public static void LoadModules(ModuleInfo[] modules)
@@ -25,17 +24,23 @@ namespace AppClient.DataStore
             Modules.Clear();
             Task.WaitAll(CheckConnectionStatusAsync(modules));
             Modules.AddRange(modules);
+
+            ModuleManager.SaveModules(Modules);
         }
 
         public static void RegisterModule(ModuleInfo module)
         {
             Task.WaitAll(CheckConnectionStatusAsync(module));
             Modules.Add(module);
+
+            ModuleManager.SaveModules(Modules);
         }
 
         public static void UnregisterModule(ModuleInfo module)
         {
             Modules.Remove(module);
+
+            ModuleManager.SaveModules(Modules);
         }
 
         public static async Task CheckConnectionStatusAsync(params ModuleInfo[] modules)
