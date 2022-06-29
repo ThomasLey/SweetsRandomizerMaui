@@ -21,12 +21,12 @@
         <VerticalStackLayout Grid.Row="0"
             Grid.Column="0" Spacing="20">
             <Entry 
-                x:Name="Devicename"
+                x:Name="DeviceNameField"
                 Placeholder="Gerätenamen eingeben"/>
 
             <Entry 
-                x:Name="URL"
-                Placeholder="URL"/>
+                x:Name="Host"
+                Placeholder="Host"/>
 
             <Picker
                 x:Name="Picker"
@@ -42,7 +42,7 @@
             </Picker>
 
             <Entry 
-                x:Name="Describtion"
+                x:Name="Description"
                 Placeholder="Beschreibung "/>
         </VerticalStackLayout>
 
