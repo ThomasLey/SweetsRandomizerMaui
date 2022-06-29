@@ -29,16 +29,18 @@
                 <!-- Generic -->
                 <VerticalStackLayout>
                     <Label Text="Name:" />
-                    <Entry 
+                    <Label 
                         x:Name="ModuleNameField"
-                        IsReadOnly="True" />
+                        LineBreakMode="WordWrap"
+                        MaxLines="-1" />
                 </VerticalStackLayout>
 
                 <VerticalStackLayout>
                     <Label Text="Beschreibung:"/>
-                    <Entry
+                    <Label 
                         x:Name="ModuleDescriptionField"
-                        IsReadOnly="True"/>
+                        LineBreakMode="WordWrap"
+                        MaxLines="-1" />
                 </VerticalStackLayout>
 
                 <!-- Offline / CheckConnection -->
@@ -46,9 +48,10 @@
                     x:Name="ConnectionStatusLayout"
                     IsVisible="False">
                     <Label Text="Nachricht:"/>
-                    <Entry 
+                    <Label 
                         x:Name="ModuleConnectionMessageField"
-                        IsReadOnly="True" />
+                        LineBreakMode="WordWrap"
+                        MaxLines="-1" />
                 </VerticalStackLayout>
 
                 <!-- Online -->
