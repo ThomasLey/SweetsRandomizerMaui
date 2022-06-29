@@ -212,4 +212,17 @@ public partial class ModuleControlPage : ContentPage
         }
     }
 
+    private async void ButtonRemove_Clicked(object sender, EventArgs e)
+    {
+       
+        bool answer = await DisplayAlert("Question?", "Möchtest du das Gerät wirklich entfernen?", "Ja", "Nein");
+        if (answer)
+        {
+            ModuleStore.UnregisterModule(device);
+            await Navigation.PopAsync();
+        }
+     
+     
+    }
+
 }
