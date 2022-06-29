@@ -1,7 +1,7 @@
 ## Eine App für das Steuern von SweetsRandomizer Geräten
 
 ### Hauptmenü
-Jedes hinzugefügtes Gerät wird in der Übersicht mitsamt Name, Hostadresse und Verbindungsstatus angezeigt.
+Jedes hinzugefügte Gerät wird in der Übersicht mitsamt Name, Hostadresse und Verbindungsstatus angezeigt.
 Der Verbindungsstatus wird anhand einer Farbe verdeutlicht.
 
 ![OverviewPage](Assets/OverviewPage.png)
