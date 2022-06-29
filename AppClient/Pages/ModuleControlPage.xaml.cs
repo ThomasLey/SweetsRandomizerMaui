@@ -109,11 +109,11 @@ public partial class ModuleControlPage : ContentPage
                 response = await SendCommand(module, "/clear");
                 break;
             case "Hintergrundfarbe ändern":
-                response = await SendCommand(module, $"/setBackground/{SegmentedColorIdField.Text}"); SegmentedSegmentIdField.Text = "";
+                response = await SendCommand(module, $"/setBackground/{SegmentedColorIdField.Text}");
                 SegmentedColorIdField.Text = "";
                 break;
             case "Alle Segmente einschalten":
-                response = await SendCommand(module, $"/on/{SegmentedColorIdField.Text}"); SegmentedSegmentIdField.Text = "";
+                response = await SendCommand(module, $"/on/{SegmentedColorIdField.Text}");
                 SegmentedColorIdField.Text = "";
                 break;
             case "Alle Segmente ausschalten":
@@ -133,18 +133,21 @@ public partial class ModuleControlPage : ContentPage
     {
         string response = await SendCommand(module, $"/highlight/{SpinningWidthField.Text}");
         if(response != null) await DisplayAlert("Error: Server responded", response, "OK");
+        SpinningWidthField.Text = "";
     }
 
     private async void SpinningHighlightSectionButton_Clicked(object sender, EventArgs e)
     {
         string response = await SendCommand(module, $"/section/{SpinningStartField.Text}/{SpinningEndField.Text}");
         if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+        SpinningEndField.Text = "";
     }
 
     private async void SpinningEnableButton_Clicked(object sender, EventArgs e)
     {
         string response = await SendCommand(module, $"/on/{SpinningColorField.Text}");
         if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+        SpinningColorField.Text = "";
     }
 
     private async void SpinningDisableButton_Clicked(object sender, EventArgs e)
