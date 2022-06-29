@@ -4,6 +4,6 @@ namespace AppClient.Provider
 {
     public interface IDeviceProvider
     {
-        ModuleInfo[] GetModules();
+        ModuleInfo[] GetDevices();
     }
 }

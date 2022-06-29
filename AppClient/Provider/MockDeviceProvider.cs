@@ -4,51 +4,9 @@ namespace AppClient.Provider
 {
     public class MockDeviceProvider : IDeviceProvider
     {
-        private static async Task FillConnectionStatus(ModuleInfo[] devices)
+        public ModuleInfo[] GetDevices()
         {
-            using HttpClient client = new HttpClient();
-
-            foreach (ModuleInfo device in devices)
-            {
-                try
-                {
-                    using HttpResponseMessage message = await client.GetAsync(device.Host).ConfigureAwait(false);
-                    string response = await message.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-                    if (!message.IsSuccessStatusCode)
-                        throw new Exception(response);
-                    else
-                    {
-                        device.ConnectionMessage = response;
-
-                        switch (device.Type)
-                        { // Connection check
-                            case ModuleType.Webpage:
-                                device.ConnectionStatus = response.StartsWith("<html>") ?
-                                    ConnectionStatus.Online : ConnectionStatus.CheckConnection;
-                                break;
-                            case ModuleType.SegmentedLights:
-                            case ModuleType.SpinningLights:
-                                device.ConnectionStatus = response.StartsWith("{") ?
-                                    ConnectionStatus.Online : ConnectionStatus.CheckConnection;
-                                break;
-                            case ModuleType.Unknown:
-                                throw new NotImplementedException();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    device.ConnectionMessage = string.IsNullOrWhiteSpace(ex.Message) ?
-                        "No Message!" : ex.Message;
-                    device.ConnectionStatus = ConnectionStatus.Offline;
-                }
-            }
-        }
-
-        public ModuleInfo[] GetModules()
-        {
-            ModuleInfo[] devices = new ModuleInfo[]
+            return new ModuleInfo[]
             {
                 new ModuleInfo()
                 {
@@ -86,9 +44,6 @@ namespace AppClient.Provider
                     Description = "Die Lollipops"
                 }
             };
-
-            Task.WaitAll(FillConnectionStatus(devices));
-            return devices;
         }
     }
 }

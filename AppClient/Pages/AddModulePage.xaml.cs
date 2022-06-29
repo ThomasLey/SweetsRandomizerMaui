@@ -1,5 +1,4 @@
 using AppClient.DataStore;
-using Java.Lang;
 
 namespace AppClient.Pages;
 
@@ -29,19 +28,23 @@ public partial class AddModulePage : ContentPage
         string describtion = Describtion.Text;
         if (string.IsNullOrWhiteSpace(describtion))
         { await DisplayAlert("Speichern nicht möglich", "Bitte Beschreibung eingeben", "OK"); return; }
-        ModuleInfo device = new ModuleInfo();
-        switch (
-            picker)
+
+        ModuleInfo device = new ModuleInfo
+        {
+            Name = devicename,
+            Description = describtion,
+            Host = url
+        };
+
+        switch (picker)
         {
             case "SegmentedLights": device.Type = ModuleType.SegmentedLights; break;
-          case "SpinningLights": device.Type = ModuleType.SegmentedLights;  break;
-           case "Webpage": device.Type = ModuleType.Webpage;  break;
+            case "SpinningLights": device.Type = ModuleType.SegmentedLights; break;
+            case "Webpage": device.Type = ModuleType.Webpage; break;
             case "Unkown": device.Type = ModuleType.Unknown; break;
         }
-        device.Name = devicename;
-        device.Description = describtion;
-        device.Host = url;
+
+        ModuleStore.RegisterModule(device);
         await Navigation.PopAsync();
-        ModuleStore.RegisterDevice(device);
     }
 }

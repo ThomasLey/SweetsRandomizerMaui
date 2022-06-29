@@ -9,8 +9,14 @@ namespace AppClient.Pages
         public OverviewPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
 
             // Load devices
+            DeviceListLayout.Clear();
             foreach (ModuleInfo device in ModuleStore.Modules)
             {
                 Button deviceButton = new Button

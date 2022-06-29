@@ -11,54 +11,53 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="45" />
-           
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+
         <VerticalStackLayout Grid.Row="0"
             Grid.Column="0" Spacing="20">
-        <Entry 
+            <Entry 
+                x:Name="Devicename"
+                Placeholder="Gerätenamen eingeben"/>
 
-            x:Name="Devicename"
-       Placeholder="Gerätenamen eingeben"/>
-        <Entry 
-   
-            x:Name="URL"
-       Placeholder="URL"/>
-        <Picker   
+            <Entry 
+                x:Name="URL"
+                Placeholder="URL"/>
 
-            x:Name="Picker"
-        Title="Typ auswählen">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>SegmentedLights</x:String>
-                    <x:String>SpinningLights</x:String>
-                    <x:String>Webpage</x:String>
-                    <x:String>Unkonwn</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
-        <Entry 
+            <Picker
+                x:Name="Picker"
+                Title="Typ auswählen">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>SegmentedLights</x:String>
+                        <x:String>SpinningLights</x:String>
+                        <x:String>Webpage</x:String>
+                        <x:String>Unkonwn</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
-            x:Name="Describtion"
-            Placeholder="Beschreibung "/>
+            <Entry 
+                x:Name="Describtion"
+                Placeholder="Beschreibung "/>
         </VerticalStackLayout>
+
         <Button 
             Grid.Row="1"
             Grid.Column="0"
-                Text="Abbrechen"
-             Clicked="ButtonAbort_Clicked"
-              />
+            Text="Abbrechen"
+            Clicked="ButtonAbort_Clicked" />
+        
         <Button 
-              Grid.Row="1"
+            Grid.Row="1"
             Grid.Column="1"
-                Text="Speichern"
-            Clicked="ButtonSaved_Clicked"
-                />
-
+            Text="Speichern"
+            Clicked="ButtonSaved_Clicked" />
+        
     </Grid>
 
 </ContentPage>
