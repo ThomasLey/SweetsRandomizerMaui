@@ -135,9 +135,167 @@
                     IsVisible="False"
                     RowSpacing="5"
                     ColumnSpacing="5">
-                    
-                    <!-- To be implemented -->
 
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Entry
+                        x:Name="SpinningWidthField"
+                        Keyboard="Numeric"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Placeholder="Weite" />
+
+                    <Button
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Clicked="SpinningHighlightButton_Clicked"
+                        Text="Hervorheben" />
+
+                    <!-- TODO: Design -->
+                    <HorizontalStackLayout
+                        Spacing="5"
+                        Grid.Column="0"
+                        Grid.Row="1">
+                        <Entry 
+                            x:Name="SpinningStartField"
+                            HorizontalOptions="Fill"
+                            Keyboard="Numeric"
+                            Placeholder="Start" />
+                        <Entry 
+                            x:Name="SpinningEndField"
+                            HorizontalOptions="Fill"
+                            Keyboard="Numeric"
+                            Placeholder="Ende" />
+                    </HorizontalStackLayout>
+
+                    <Button
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Clicked="SpinningHighlightSectionButton_Clicked"
+                        Text="Sektion Hervorheben" />
+
+                    <Entry 
+                        x:Name="SpinningColorField"
+                        Keyboard="Numeric"
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Placeholder="Farbe" />
+
+                    <Button
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Clicked="SpinningEnableButton_Clicked"
+                        Text="Einschalten" />
+
+                    <Button
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Clicked="SpinningDisableButton_Clicked"
+                        Text="Ausschalten" />
+
+                    <!-- Settings -->
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        VerticalTextAlignment="Center"
+                        Text="Geschwindigkeit" />
+
+                    <Entry 
+                        x:Name="SpinningSpeedField"
+                        Keyboard="Numeric"
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Placeholder="Geschwindigkeit"/>
+
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        VerticalTextAlignment="Center"
+                        Text="Richtung" />
+
+                    <Entry 
+                        x:Name="SpinningDirectionField"
+                        Keyboard="Numeric"
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Placeholder="Richtung"/>
+
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="6"
+                        VerticalTextAlignment="Center"
+                        Text="Hintergrund" />
+
+                    <Entry 
+                        x:Name="SpinningBackgroundField"
+                        Keyboard="Numeric"
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        Placeholder="Hintergrund"/>
+
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="7"
+                        VerticalTextAlignment="Center"
+                        Text="Vordergrund" />
+
+                    <Entry 
+                        x:Name="SpinningForegroundField"
+                        Keyboard="Numeric"
+                        Grid.Column="1"
+                        Grid.Row="7"
+                        Placeholder="Vordergrund"/>
+
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="8"
+                        VerticalTextAlignment="Center"
+                        Text="Pixel pro Seg." />
+
+                    <Entry 
+                        x:Name="SpinningPixelPerSegmentField"
+                        Keyboard="Numeric"
+                        Grid.Column="1"
+                        Grid.Row="8"
+                        Placeholder="Pixel pro Seg."/>
+
+                    <Label 
+                        Grid.Column="0"
+                        Grid.Row="9"
+                        VerticalTextAlignment="Center"
+                        Text="Seg. Anzahl" />
+
+                    <Entry 
+                        x:Name="SpinningSegmentCountField"
+                        Keyboard="Numeric"
+                        Grid.Column="1"
+                        Grid.Row="9"
+                        Placeholder="Seg. Anzahl"/>
+
+                    <Button
+                        Grid.Column="0"
+                        Grid.Row="10"
+                        Grid.ColumnSpan="2"
+                        Clicked="SpinningUpdateButton_Clicked"
+                        Text="Aktualisieren"/>
                 </Grid>
             </VerticalStackLayout>
         </ScrollView>
