@@ -1,9 +1,16 @@
-# SweetsRandomizer
 ## Eine App für das Steuern von SweetsRandomizer Geräten
 
 ### Hauptmenü
+Jedes hinzugefügtes Gerät wird in der Übersicht mitsamt Name, Hostadresse und Verbindungsstatus angezeigt.
+Der Verbindungsstatus wird anhand einer Farbe verdeutlicht.
 
 ![OverviewPage](Assets/OverviewPage.png)
+
+> ## Information:
+> Die Farben haben folgende Bedeutung:
+> - Rot -> Nicht erreichbar (Timeout oder gar nicht existent)
+> - Gelb -> Erreichbar, aber das Verhalten ist nicht dessen Kategorie entsprechend
+> - Grün -> Erreichbar und einsatzbereit
 
 ## Benutzerhandbuch
 
