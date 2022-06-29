@@ -34,7 +34,7 @@
         <Picker   
             Grid.Row="2"
             Grid.Column="0"
-            x:Name="picker"
+            x:Name="Picker"
         Title="Typ auswählen">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
@@ -60,6 +60,7 @@
               Grid.Row="4"
             Grid.Column="1"
                 Text="Speichern"
+            Clicked="ButtonSaved_Clicked"
                 />
 
     </Grid>
