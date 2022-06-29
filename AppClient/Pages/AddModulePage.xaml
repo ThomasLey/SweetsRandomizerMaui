@@ -9,57 +9,54 @@
         ColumnSpacing="5">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="45" />
-            <RowDefinition Height="45" />
-            <RowDefinition Height="45" />
             <RowDefinition />
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="45" />
+           
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-
+        <VerticalStackLayout Grid.Row="0"
+            Grid.Column="0" Spacing="20">
         <Entry 
-            Grid.Row="0"
-            Grid.Column="0"
+
             x:Name="Devicename"
        Placeholder="Gerätenamen eingeben"/>
         <Entry 
-            Grid.Row="1"
-            Grid.Column="0"
+   
             x:Name="URL"
        Placeholder="URL"/>
         <Picker   
-            Grid.Row="2"
-            Grid.Column="0"
-            x:Name="picker"
+
+            x:Name="Picker"
         Title="Typ auswählen">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>SegmentedLights</x:String>
                     <x:String>SpinningLights</x:String>
-                    <x:String>Other</x:String>
+                    <x:String>Webpage</x:String>
+                    <x:String>Unkonwn</x:String>
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
         <Entry 
-            Grid.Row="3"
-            Grid.Column="0"
+
             x:Name="Describtion"
             Placeholder="Beschreibung "/>
-
+        </VerticalStackLayout>
         <Button 
-            Grid.Row="4"
+            Grid.Row="1"
             Grid.Column="0"
                 Text="Abbrechen"
              Clicked="ButtonAbort_Clicked"
               />
         <Button 
-              Grid.Row="4"
+              Grid.Row="1"
             Grid.Column="1"
                 Text="Speichern"
+            Clicked="ButtonSaved_Clicked"
                 />
 
     </Grid>
