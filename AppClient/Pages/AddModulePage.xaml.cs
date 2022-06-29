@@ -49,18 +49,13 @@ public partial class AddModulePage : ContentPage
             return; 
         }
 
-        if (Picker.SelectedIndex == -1)
+        if (Picker.SelectedIndex < 0)
         { 
             await DisplayAlert("Speichern nicht möglich", "Bitte Typ auswählen", "OK");
             return; 
         }
 
         string description = Description.Text;
-        if (string.IsNullOrWhiteSpace(description))
-        { 
-            await DisplayAlert("Speichern nicht möglich", "Bitte Beschreibung eingeben", "OK"); 
-            return; 
-        }
 
         bool notRegistered = module == null;
         if(module == null)

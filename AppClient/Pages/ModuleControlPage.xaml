@@ -168,22 +168,22 @@
                         Clicked="SpinningHighlightButton_Clicked"
                         Text="Hervorheben" />
 
-                    <!-- TODO: Design -->
-                    <HorizontalStackLayout
+                    <StackLayout
+                        Orientation="Horizontal"
                         Spacing="5"
                         Grid.Column="0"
                         Grid.Row="1">
                         <Entry 
                             x:Name="SpinningStartField"
-                            HorizontalOptions="Fill"
+                            HorizontalOptions="FillAndExpand"
                             Keyboard="Numeric"
                             Placeholder="Start" />
                         <Entry 
                             x:Name="SpinningEndField"
-                            HorizontalOptions="Fill"
+                            HorizontalOptions="FillAndExpand"
                             Keyboard="Numeric"
                             Placeholder="Ende" />
-                    </HorizontalStackLayout>
+                    </StackLayout>
 
                     <Button
                         Grid.Column="1"

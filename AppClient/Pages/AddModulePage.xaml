@@ -20,29 +20,39 @@
 
         <VerticalStackLayout Grid.Row="0"
             Grid.Column="0" Spacing="20">
-            <Entry 
-                x:Name="ModuleNameField"
-                Placeholder="Gerätenamen eingeben"/>
+            
+            <VerticalStackLayout>
+                <Label Text="Gerätename:"/>
+                <Entry 
+                    x:Name="ModuleNameField"
+                    Placeholder="Gerätenamen eingeben"/>
+            </VerticalStackLayout>
 
-            <Entry 
-                x:Name="Host"
-                Placeholder="Host eingeben"/>
+            <VerticalStackLayout>
+                <Label Text="Host:"/>
+                <Entry 
+                    x:Name="Host"
+                    Placeholder="Host eingeben"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Beschreibung:"/>
+                <Entry 
+                    x:Name="Description"
+                    Placeholder="Beschreibung eingeben"/>
+            </VerticalStackLayout>
 
             <Picker
                 x:Name="Picker"
                 Title="Typ auswählen">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>SegmentedLights</x:String>
-                        <x:String>SpinningLights</x:String>
+                        <x:String>Segmented lights</x:String>
+                        <x:String>Spinning lights</x:String>
                         <x:String>Webpage</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
-
-            <Entry 
-                x:Name="Description"
-                Placeholder="Beschreibung "/>
         </VerticalStackLayout>
 
         <Button 
