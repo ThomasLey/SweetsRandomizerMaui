@@ -18,13 +18,13 @@ namespace AppClient.DataStore
         public static void LoadModules(ModuleInfo[] devices)
         {
             Modules.Clear();
-            Task.WaitAll(CheckModuleConnection(devices));
+            Task.WaitAll(CheckConnectionStatus(devices));
             Modules.AddRange(devices);
         }
 
         public static void RegisterModule(ModuleInfo device)
         {
-            Task.WaitAll(CheckModuleConnection(device));
+            Task.WaitAll(CheckConnectionStatus(device));
             Modules.Add(device);
         }
 
@@ -33,7 +33,7 @@ namespace AppClient.DataStore
             Modules.Remove(device);
         }
 
-        private static async Task CheckModuleConnection(params ModuleInfo[] devices)
+        public static async Task CheckConnectionStatus(params ModuleInfo[] devices)
         {
             using HttpClient client = new HttpClient();
             client.Timeout = TimeSpan.FromSeconds(10);

@@ -310,7 +310,8 @@
         <Button
             Grid.Row="1"
             Grid.Column="1"
-            Text="Bearbeiten"/>
+            Text="Bearbeiten"
+            Clicked="EditButton_Clicked"/>
     </Grid>
 
 </ContentPage>

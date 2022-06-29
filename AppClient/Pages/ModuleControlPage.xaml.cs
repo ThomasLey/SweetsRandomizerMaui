@@ -10,15 +10,19 @@ public partial class ModuleControlPage : ContentPage
 	{
 		InitializeComponent();
 		this.device = device;
+	}
 
-		ModuleNameField.Text = device.Name;
-		ModuleDescriptionField.Text = device.Description;
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        ModuleNameField.Text = device.Name;
+        ModuleDescriptionField.Text = device.Description;
 
-		if(device.ConnectionStatus != ConnectionStatus.Online)
-		{
+        if (device.ConnectionStatus != ConnectionStatus.Online)
+        {
             ConnectionStatusLayout.IsVisible = true;
             ModuleConnectionMessageField.Text = device.ConnectionMessage;
-			return;
+            return;
         }
 
         switch (device.Type)
@@ -39,7 +43,7 @@ public partial class ModuleControlPage : ContentPage
             default:
                 throw new NotImplementedException();
         }
-	}
+    }
 
     #region Segmented Lights
     private void SegmentedCommandPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -196,6 +200,11 @@ public partial class ModuleControlPage : ContentPage
         }
     }
     #endregion
+
+    private async void EditButton_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AddModulePage(device));
+    }
 
     private static async Task<string> SendCommand(ModuleInfo device, string command)
     {
