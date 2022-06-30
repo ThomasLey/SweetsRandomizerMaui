@@ -18,8 +18,11 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <VerticalStackLayout Grid.Row="0"
-            Grid.Column="0" Spacing="20">
+        <VerticalStackLayout 
+            Grid.Row="0"
+            Grid.Column="0" 
+            Grid.ColumnSpan="2"
+            Spacing="20">
             
             <VerticalStackLayout>
                 <Label Text="Gerätename:"/>
