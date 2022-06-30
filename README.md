@@ -72,3 +72,11 @@ Hierbei werden Befehle mittels verschiedener Knöpfe gesendet.
 > - Stelle die Vordergrundfarbe ein.
 > - Stelle ein, wie viele Pixel ein Segment besitzt.
 > - Stelle ein, wie viele Segmente das Gerät besitzt.
+
+#### Animated-Light Gerät
+Im gegensatz zu den anderen Geräten, sind Animated-Light-Geräte nicht sehr abstrakt entworfen.
+Hierbei können Farben mithilfe von vordefinierten Knöpfen oder unter eigenen Angaben geändert werden.
+Anschließend bieten Slider und Dropdown-Menüs die Option, eine Animation auszuwählen und dessen Geschwindigkeit zu setzen.
+Ebenso gibt es bei Animated-Light-Geräten einen zusätzlichen Bewegungsmelder, wobei die Dauer ebenso mit einem Slider definiert werden kann.
+
+![ModuleControlPage](Assets/ModuleControlPage_AnimatedLightsView.png)
