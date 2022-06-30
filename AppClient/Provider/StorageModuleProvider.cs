@@ -2,9 +2,9 @@
 using System.Text;
 using System.Text.Json;
 
-namespace AppClient.Manager
+namespace AppClient.Provider
 {
-    public class StorageModuleManager : IModuleManager
+    public class StorageModuleProvider : IModuleProvider
     {
         public ModuleInfo[] LoadModules()
         {
@@ -14,13 +14,6 @@ namespace AppClient.Manager
             string modulesJson = Encoding.ASCII.GetString(Convert.FromBase64String(modulesBase64));
             ModuleInfo[] modules = JsonSerializer.Deserialize<ModuleInfo[]>(modulesJson);
             return modules == null ? Array.Empty<ModuleInfo>() : modules;
-        }
-
-        public void SaveModules(ICollection<ModuleInfo> modules)
-        {
-            string modulesJson = JsonSerializer.Serialize(modules);
-            string modulesBase64 = Convert.ToBase64String(Encoding.ASCII.GetBytes(modulesJson));
-            Preferences.Set("modules", modulesBase64);
         }
     }
 }

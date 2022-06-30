@@ -1,4 +1,4 @@
-﻿using AppClient.Manager;
+﻿using AppClient.Provider;
 
 namespace AppClient.DataStore
 {
@@ -7,16 +7,26 @@ namespace AppClient.DataStore
 
         public static readonly List<ModuleInfo> Modules = new List<ModuleInfo>();
 
-        // TODO: Change ModuleManager
-#if DEBUG
-        private static readonly IModuleManager ModuleManager = new MockModuleManager();
-#else
-        private static readonly IModuleManager ModuleManager = new StorageModuleManager();
-#endif
+        private static readonly IModuleProvider ModuleManager;
 
         static ModuleStore()
         {
-            LoadModules(ModuleManager.LoadModules());
+            IModuleProvider moduleManager = new StorageModuleProvider();
+            ModuleInfo[] modules = moduleManager.LoadModules();
+
+            if(modules.Length == 0)
+            {
+#if DEBUG
+                moduleManager = new MockModuleProvider();
+#else
+                moduleManager = new CandyWheelModuleProvider();
+#endif
+
+                modules = moduleManager.LoadModules();
+            }
+
+            ModuleManager = moduleManager;
+            LoadModules(modules);
         }
 
         public static void LoadModules(ModuleInfo[] modules)
