@@ -55,12 +55,6 @@
                         MaxLines="-1" />
                 </VerticalStackLayout>
 
-                <!-- Online -->
-                <Label 
-                    x:Name="NoControlLabel"
-                    IsVisible="False"
-                    Text="Keine Steuerung möglich" />
-
                 <!-- Controls -->
                 <!-- Added by the program -->
             </VerticalStackLayout>

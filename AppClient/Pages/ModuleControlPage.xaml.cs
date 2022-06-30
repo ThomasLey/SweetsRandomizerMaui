@@ -29,16 +29,15 @@ public partial class ModuleControlPage : ContentPage
             ModuleConnectionMessageField.Text = module.ConnectionMessage;
             return;
         }
-        else if(module.Type == ModuleType.Webpage)
-        {
-            NoControlLabel.IsVisible = true;
-            return;
-        }
 
         // Select ControlView
         ContentView controlView;
         switch (module.Type)
         {
+            case ModuleType.Webpage:
+                controlView = new WebpageControlView(module);
+                break;
+
             case ModuleType.SegmentedLights:
                 controlView = new SegmentControlView(module);
                 break;
