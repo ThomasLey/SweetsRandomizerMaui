@@ -79,6 +79,7 @@ namespace AppClient.DataStore
                                 break;
                             case ModuleType.SegmentedLights:
                             case ModuleType.SpinningLights:
+                            case ModuleType.AnimationLights:
                                 module.ConnectionStatus = response.StartsWith("{") ?
                                     ConnectionStatus.Online : ConnectionStatus.CheckConnection;
                                 break;

@@ -53,6 +53,7 @@
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Segmented lights</x:String>
                         <x:String>Spinning lights</x:String>
+                        <x:String>Animation lights</x:String>
                         <x:String>Webpage</x:String>
                     </x:Array>
                 </Picker.ItemsSource>

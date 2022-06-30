@@ -20,6 +20,6 @@
 
     public enum ModuleType
     {
-        SegmentedLights, SpinningLights, Webpage
+        SegmentedLights, SpinningLights, AnimationLights, Webpage
     }
 }

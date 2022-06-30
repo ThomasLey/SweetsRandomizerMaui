@@ -35,6 +35,13 @@ namespace AppClient.Provider
                     Host = "http://192.168.1.3",
                     Type = ModuleType.SpinningLights,
                     Description = "Die Leinwand"
+                },
+                new ModuleInfo()
+                {
+                    Name = "Batlights",
+                    Host = "http://192.168.1.4",
+                    Type = ModuleType.AnimationLights,
+                    Description = "Die Batlights"
                 }
             };
         }

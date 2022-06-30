@@ -47,6 +47,9 @@ namespace MockServer
                     case "leinwand":
                         output = LeinwandRoute.HandleContext(context);
                         break;
+                    case "batlights":
+                        output = BatlightsRoute.HandleContext(context);
+                        break;
                     default:
                         output = null;
                         break;

@@ -38,10 +38,10 @@ namespace AppClient.Provider
                 },
                 new ModuleInfo()
                 {
-                    Name = "Lollipop",
-                    Host = "http://10.0.2.2:8080/lollipop",
-                    Type = ModuleType.SegmentedLights,
-                    Description = "Die Lollipops"
+                    Name = "Batlights",
+                    Host = "http://10.0.2.2:8080/batlights",
+                    Type = ModuleType.AnimationLights,
+                    Description = "Die Batlights"
                 }
             };
         }

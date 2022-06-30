@@ -1,4 +1,5 @@
 using AppClient.DataStore;
+using static Microsoft.Maui.ApplicationModel.Permissions;
 
 namespace AppClient.Pages;
 
@@ -39,10 +40,175 @@ public partial class ModuleControlPage : ContentPage
                 SpinningLightsLayout.IsVisible = true;
                 break;
 
+            case ModuleType.AnimationLights:
+                AnimationLightsLayout.IsVisible = true;
+                break;
+
             default:
                 throw new NotImplementedException();
         }
     }
+
+    #region Animated Lights
+    private async void AnimationRedButton_Clicked(object sender, EventArgs e)
+    {
+        string response = await SendCommand(module, "/colorCode/red");
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private async void AnimationGreenButton_Clicked(object sender, EventArgs e)
+    {
+        string response = await SendCommand(module, "/colorCode/green");
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private async void AnimationBlueButton_Clicked(object sender, EventArgs e)
+    {
+        string response = await SendCommand(module, "/colorCode/blue");
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private async void AnimationYellowButton_Clicked(object sender, EventArgs e)
+    {
+        string response = await SendCommand(module, "/colorCode/yellow");
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private async void AnimationCyanButton_Clicked(object sender, EventArgs e)
+    {
+        string response = await SendCommand(module, "/colorCode/cyan");
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private async void AnimationMagentaButton_Clicked(object sender, EventArgs e)
+    {
+        string response = await SendCommand(module, "/colorCode/magenta");
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private async void AnimationOffButton_Clicked(object sender, EventArgs e)
+    {
+        string response = await SendCommand(module, "/colorCode/black");
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private async void AnimationOnButton_Clicked(object sender, EventArgs e)
+    {
+        string response = await SendCommand(module, "/colorCode/white");
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private async void AnimationPicker_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (AnimationPicker.SelectedIndex < 0) return;
+
+        string animation;
+        switch((string)AnimationPicker.SelectedItem)
+        {
+            case "Statisch":
+                animation = "all";
+                break;
+            case "Einzeln":
+                animation = "single";
+                break;
+            case "Invertiert":
+                animation = "invert";
+                break;
+            case "Nachziehend":
+                animation = "kitt";
+                break;
+            default:
+                throw new NotImplementedException();
+        }
+
+        string response = await SendCommand(module, "/animation/" + animation);
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private void AnimationSpeedSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        switch((int)Math.Round(AnimationSpeedSlider.Value))
+        {
+            case 0:
+                AnimationSpeedLabel.Text = "Schildkröte";
+                break;
+            case 1:
+                AnimationSpeedLabel.Text = "Sehr langsam";
+                break;
+            case 2:
+                AnimationSpeedLabel.Text = "Langsam";
+                break;
+            case 3:
+                AnimationSpeedLabel.Text = "Medium";
+                break;
+            case 4:
+                AnimationSpeedLabel.Text = "Schnell";
+                break;
+            case 5:
+                AnimationSpeedLabel.Text = "Sehr schnell";
+                break;
+            case 6:
+                AnimationSpeedLabel.Text = "Maximum";
+                break;
+
+            default:
+                throw new NotImplementedException();
+        }
+    }
+
+    private async void AnimationSpeedSlider_DragCompleted(object sender, EventArgs e)
+    {
+        string speed;
+        switch ((int)Math.Round(AnimationSpeedSlider.Value))
+        {
+            case 0:
+                speed = "turtle";
+                break;
+            case 1:
+                speed = "veryslow";
+                break;
+            case 2:
+                speed = "slow";
+                break;
+            case 3:
+                speed = "medium";
+                break;
+            case 4:
+                speed = "fast";
+                break;
+            case 5:
+                speed = "veryfast";
+                break;
+            case 6:
+                speed = "max";
+                break;
+
+            default:
+                throw new NotImplementedException();
+        }
+
+        string response = await SendCommand(module, "/speedCode/" + speed);
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private void AnimationMoveSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        AnimationMoveLabel.Text = (int)Math.Round(AnimationMoveSlider.Value) + " Sekunden";
+    }
+
+    private async void AnimationMoveSlider_DragCompleted(object sender, EventArgs e)
+    {
+        int seconds = (int)Math.Round(AnimationMoveSlider.Value);
+        string response = await SendCommand(module, "/move/" + (seconds * 1000));
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+
+    private async void AnimationColorButton_Clicked(object sender, EventArgs e)
+    {
+        string response = await SendCommand(module, "/color/" + AnimationColorField.Text);
+        if (response != null) await DisplayAlert("Error: Server responded", response, "OK");
+    }
+    #endregion
 
     #region Segmented Lights
     private void SegmentedCommandPicker_SelectedIndexChanged(object sender, EventArgs e)
