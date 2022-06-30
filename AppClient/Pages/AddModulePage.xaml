@@ -32,6 +32,7 @@
                 <Label Text="Host:"/>
                 <Entry 
                     x:Name="Host"
+                    Text="http://127.0.0.1/"
                     Placeholder="Host eingeben"/>
             </VerticalStackLayout>
 
