@@ -9,6 +9,11 @@ namespace AppClient.Pages
         public OverviewPage()
         {
             InitializeComponent();
+
+            // ignore warning
+            Task.WaitAll(ModuleStore.CheckConnectionStatusAsync(
+                ModuleStore.Modules.ToArray()
+            ));
         }
 
         protected override void OnAppearing()
@@ -21,6 +26,7 @@ namespace AppClient.Pages
             {
                 Button moduleButton = new Button
                 {
+                    //BindingContext = module,
                     Text = $"{module.Name} [{module.Host}]",
                     ContentLayout = new Button.ButtonContentLayout(
                         Button.ButtonContentLayout.ImagePosition.Right, 0
@@ -28,14 +34,8 @@ namespace AppClient.Pages
                 };
 
                 moduleButton.Clicked += (s, e) => ButtonModule_Clicked(module);
-                moduleButton.ImageSource = module.ConnectionStatus switch
-                {
-                    ConnectionStatus.Online => (ImageSource)"status_online.svg",
-                    ConnectionStatus.CheckConnection => (ImageSource)"status_check.svg",
-                    ConnectionStatus.Offline => (ImageSource)"status_offline.svg",
-                    _ => throw new NotImplementedException()
-                };
-
+                //moduleButton.SetBinding(Button.ImageSourceProperty, nameof(module.StatusIcon));
+                moduleButton.ImageSource = module.StatusIcon;
                 ModuleListLayout.Add(moduleButton);
             }
         }

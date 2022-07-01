@@ -5,8 +5,7 @@ namespace AppClient.DataStore
     public static class ModuleStore
     {
 
-        public static readonly List<ModuleInfo> Modules = new List<ModuleInfo>();
-
+        public static readonly List<ModuleInfo> Modules;
         private static readonly IModuleProvider ModuleManager;
 
         static ModuleStore()
@@ -21,36 +20,28 @@ namespace AppClient.DataStore
 #else
                 moduleManager = new CandyWheelModuleProvider();
 #endif
-
                 modules = moduleManager.LoadModules();
             }
 
+            Modules = new List<ModuleInfo>(modules);
             ModuleManager = moduleManager;
-            LoadModules(modules);
         }
 
-        public static void LoadModules(ModuleInfo[] modules)
+        public static void SaveModules()
         {
-            Modules.Clear();
-            Task.WaitAll(CheckConnectionStatusAsync(modules));
-            Modules.AddRange(modules);
-
             ModuleManager.SaveModules(Modules);
         }
 
         public static void RegisterModule(ModuleInfo module)
         {
-            Task.WaitAll(CheckConnectionStatusAsync(module));
             Modules.Add(module);
-
-            ModuleManager.SaveModules(Modules);
+            SaveModules();
         }
 
         public static void UnregisterModule(ModuleInfo module)
         {
             Modules.Remove(module);
-
-            ModuleManager.SaveModules(Modules);
+            SaveModules();
         }
 
         public static async Task CheckConnectionStatusAsync(params ModuleInfo[] modules)
@@ -60,6 +51,8 @@ namespace AppClient.DataStore
 
             foreach (ModuleInfo module in modules)
             {
+                module.ConnectionStatus = ConnectionStatus.Pending;
+
                 try
                 {
                     using HttpResponseMessage message = await client.GetAsync(module.Host).ConfigureAwait(false);

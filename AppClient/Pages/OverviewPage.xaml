@@ -18,6 +18,7 @@
             Grid.Column="0">
             <StackLayout
                 x:Name="ModuleListLayout"
+                Orientation="Vertical"
                 Spacing="10">
                 
                 <!-- Added by the program -->

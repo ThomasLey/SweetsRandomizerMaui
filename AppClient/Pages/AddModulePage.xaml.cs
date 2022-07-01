@@ -69,8 +69,9 @@ public partial class AddModulePage : ContentPage
         if (notRegistered)
             ModuleStore.RegisterModule(module);
         else
-            Task.WaitAll(ModuleStore.CheckConnectionStatusAsync(module));
+            ModuleStore.SaveModules();
 
+        await ModuleStore.CheckConnectionStatusAsync(module);
         await Navigation.PopAsync();
     }
 }
