@@ -4,7 +4,6 @@
              x:Class="AppClient.Pages.AddModulePage"
              Title="Gerät hinzufügen">
     <Grid
-      
         Margin="10"
         RowSpacing="10"
         ColumnSpacing="5">
@@ -18,64 +17,65 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+
         <ScrollView 
             Grid.Row="0"
             Grid.Column="0" 
             Grid.ColumnSpan="2">
-        <VerticalStackLayout 
-            Spacing="20">
-            
-            <VerticalStackLayout>
-                <Label Text="Gerätename:"/>
-                <Entry 
-                    x:Name="ModuleNameField"
-                    Placeholder="Gerätenamen eingeben"/>
-            </VerticalStackLayout>
 
-            <VerticalStackLayout>
-                <Label Text="Host:"/>
-                <Entry 
-                    x:Name="Host"
-                    Text="http://127.0.0.1/"
-                    Placeholder="Host eingeben"/>
-            </VerticalStackLayout>
+            <VerticalStackLayout 
+                Spacing="20">
+                <VerticalStackLayout>
+                    <Label Text="Gerätename:"/>
+                    <Entry 
+                        x:Name="ModuleNameField"
+                        Placeholder="Gerätenamen eingeben"/>
+                </VerticalStackLayout>
 
-            <VerticalStackLayout>
-                <Label Text="Beschreibung:"/>
-                <ScrollView>
-                    <Editor
-                    x:Name="Description"
-                    Placeholder="Beschreibung eingeben"/>
-                </ScrollView>
-            </VerticalStackLayout>
-               
+                <VerticalStackLayout>
+                    <Label Text="Host:"/>
+                    <Entry 
+                        x:Name="Host"
+                        Text="http://127.0.0.1/"
+                        Placeholder="Host eingeben"/>
+                </VerticalStackLayout>
 
-            <Picker
-                x:Name="Picker"
-                Title="Typ auswählen">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Segmented lights</x:String>
-                        <x:String>Spinning lights</x:String>
-                        <x:String>Animation lights</x:String>
-                        <x:String>Webpage</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-        </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <Label Text="Beschreibung:"/>
+                    <ScrollView>
+                        <Editor
+                            x:Name="Description"
+                            Placeholder="Beschreibung eingeben"/>
+                    </ScrollView>
+                </VerticalStackLayout>
+
+                <Picker
+                    x:Name="Picker"
+                    Title="Typ auswählen">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Segmented lights</x:String>
+                            <x:String>Spinning lights</x:String>
+                            <x:String>Animation lights</x:String>
+                            <x:String>Webpage</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </VerticalStackLayout>
         </ScrollView>
+
         <Button 
             Grid.Row="1"
             Grid.Column="0"
             Text="Abbrechen"
             Clicked="ButtonAbort_Clicked" />
-        
+
         <Button 
             Grid.Row="1"
             Grid.Column="1"
             Text="Speichern"
             Clicked="ButtonSaved_Clicked" />
-        
+
     </Grid>
 
 </ContentPage>

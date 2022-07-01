@@ -24,7 +24,6 @@
             Grid.Column="0"
             Grid.ColumnSpan="2">
             <VerticalStackLayout
-                x:Name="ControlLayout"
                 Spacing="10">
 
                 <!-- Generic -->
@@ -56,7 +55,12 @@
                 </VerticalStackLayout>
 
                 <!-- Controls -->
-                <!-- Added by the program -->
+                <StackLayout
+                    x:Name="ControlLayout">
+                    
+                    <!-- Managed by the program -->
+                    
+                </StackLayout>
             </VerticalStackLayout>
         </ScrollView>
 
