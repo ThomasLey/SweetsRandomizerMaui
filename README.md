@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+# SweetsRandomizerMaui
+
+### ModuleAddPage
+1. Textfeld um GerÃ¤tenamen einzugeben.
+2. Textfeld um Host einzugeben.
+3. Textfeld um Beschreibung einzugeben.
+4. Dropdown-Menu mit folgenden auswahlmÃ¶glichkeiten: 
+- Segmented lights
+- Spinning lights
+- Webpage
+
+5. Abbrechen Knopf um Aktion abzubrechen.
+6. Speichern Knopf um Aktion zu Speichern.
+
+
+=======
 ## Eine App für das Steuern von SweetsRandomizer Geräten
 
 ### Hauptmenü
@@ -80,3 +97,4 @@ Anschließend bieten Slider und Dropdown-Menüs die Option, eine Animation auszuwä
 Ebenso gibt es bei Animated-Light-Geräten einen zusätzlichen Bewegungsmelder, wobei die Dauer ebenso mit einem Slider definiert werden kann.
 
 ![ModuleControlPage](Assets/ModuleControlPage_AnimatedLightsView.png)
+>>>>>>> 12d50641e971d6477cada0d930a4ae7970495397
