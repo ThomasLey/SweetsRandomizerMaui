@@ -57,12 +57,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Images\status_check.svg" />
-	  <None Remove="Resources\Images\status_offline.svg" />
-	  <None Remove="Resources\Images\status_online.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="Pages\OverviewPage.xaml.cs">
 	    <DependentUpon>OverviewPage.xaml</DependentUpon>
 	  </Compile>

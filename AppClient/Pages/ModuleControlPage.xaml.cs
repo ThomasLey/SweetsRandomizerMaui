@@ -1,6 +1,5 @@
 using AppClient.DataStore;
 using AppClient.Pages.Content;
-using Microsoft.Maui.Controls;
 
 namespace AppClient.Pages;
 
@@ -17,6 +16,7 @@ public partial class ModuleControlPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+        ControlLayout.Clear();
 
         // Set generic information
         ModuleNameField.Text = module.Name;
@@ -29,6 +29,9 @@ public partial class ModuleControlPage : ContentPage
             ModuleConnectionMessageField.Text = module.ConnectionMessage;
             return;
         }
+
+        // Hide connection status if online
+        ConnectionStatusLayout.IsVisible = false;
 
         // Select ControlView
         ContentView controlView;

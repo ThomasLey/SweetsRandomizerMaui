@@ -1,4 +1,5 @@
 ﻿using AppClient.DataStore;
+using System.Reflection;
 using ModuleInfo = AppClient.DataStore.ModuleInfo;
 
 namespace AppClient.Pages
@@ -10,33 +11,43 @@ namespace AppClient.Pages
         {
             InitializeComponent();
 
-            // ignore warning
-            Task.WaitAll(ModuleStore.CheckConnectionStatusAsync(
-                ModuleStore.Modules.ToArray()
-            ));
+            // Connect to all modules at once
+            foreach (ModuleInfo module in ModuleStore.Modules)
+                Task.Run(() => ModuleStore.CheckConnectionStatusAsync(module));
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            // Load modules
+            // (Re-)Load modules
             ModuleListLayout.Clear();
             foreach (ModuleInfo module in ModuleStore.Modules)
             {
                 Button moduleButton = new Button
                 {
-                    //BindingContext = module,
-                    Text = $"{module.Name} [{module.Host}]",
+                    BindingContext = module,
                     ContentLayout = new Button.ButtonContentLayout(
                         Button.ButtonContentLayout.ImagePosition.Right, 0
                     )
                 };
 
                 moduleButton.Clicked += (s, e) => ButtonModule_Clicked(module);
-                //moduleButton.SetBinding(Button.ImageSourceProperty, nameof(module.StatusIcon));
-                moduleButton.ImageSource = module.StatusIcon;
+                moduleButton.SetBinding(Button.BackgroundColorProperty, nameof(module.StatusColor));
+                moduleButton.SetBinding(Button.TextProperty, nameof(module.DisplayName));
                 ModuleListLayout.Add(moduleButton);
+            }
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            // Remove bindings
+            foreach(Button moduleButton in ModuleListLayout)
+            {
+                moduleButton.RemoveBinding(Button.BackgroundColorProperty);
+                moduleButton.RemoveBinding(Button.TextProperty);
             }
         }
 

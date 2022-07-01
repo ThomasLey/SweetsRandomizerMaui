@@ -16,6 +16,7 @@ namespace AppClient.DataStore
             {
                 name = value;
                 OnPropertyChanged(nameof(Name));
+                OnPropertyChanged(nameof(DisplayName));
             }
         }
 
@@ -27,6 +28,7 @@ namespace AppClient.DataStore
             {
                 host = value;
                 OnPropertyChanged(nameof(Host));
+                OnPropertyChanged(nameof(DisplayName));
             }
         }
 
@@ -63,7 +65,7 @@ namespace AppClient.DataStore
             {
                 connectionStatus = value;
                 OnPropertyChanged(nameof(ConnectionStatus));
-                OnPropertyChanged(nameof(StatusIcon));
+                OnPropertyChanged(nameof(StatusColor));
             }
         }
 
@@ -82,16 +84,22 @@ namespace AppClient.DataStore
         }
 
         [JsonIgnore]
-        public ImageSource StatusIcon
+        public Color StatusColor
         {
             get => ConnectionStatus switch
             {
-                ConnectionStatus.Pending => (ImageSource)"status_pending.svg",
-                ConnectionStatus.Offline => (ImageSource)"status_offline.svg",
-                ConnectionStatus.CheckConnection => (ImageSource)"status_check.svg",
-                ConnectionStatus.Online => (ImageSource)"status_online.svg",
+                ConnectionStatus.Pending => null,
+                ConnectionStatus.Offline => Colors.Red,
+                ConnectionStatus.CheckConnection => Colors.Orange,
+                ConnectionStatus.Online => Colors.Green,
                 _ => throw new NotImplementedException()
             };
+        }
+
+        [JsonIgnore]
+        public string DisplayName
+        {
+            get => $"{Name} [{Host}]";
         }
 
         private void OnPropertyChanged(string name)
