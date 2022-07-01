@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppClient.Pages.AddModulePage"
              Title="Gerät hinzufügen">
-    <Grid 
+    <Grid
+      
         Margin="10"
         RowSpacing="10"
         ColumnSpacing="5">
@@ -17,11 +18,11 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-
-        <VerticalStackLayout 
+        <ScrollView 
             Grid.Row="0"
             Grid.Column="0" 
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="2">
+        <VerticalStackLayout 
             Spacing="20">
             
             <VerticalStackLayout>
@@ -41,10 +42,13 @@
 
             <VerticalStackLayout>
                 <Label Text="Beschreibung:"/>
-                <Entry 
+                <ScrollView>
+                    <Editor
                     x:Name="Description"
                     Placeholder="Beschreibung eingeben"/>
+                </ScrollView>
             </VerticalStackLayout>
+               
 
             <Picker
                 x:Name="Picker"
@@ -59,7 +63,7 @@
                 </Picker.ItemsSource>
             </Picker>
         </VerticalStackLayout>
-
+        </ScrollView>
         <Button 
             Grid.Row="1"
             Grid.Column="0"
