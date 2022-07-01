@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppClient.Pages.Content.SpinningControlView">
+
+    <!-- Spinning Lights -->
+    <Grid
+        x:Name="SpinningLightsLayout"
+        Margin="5"
+        RowSpacing="5"
+        ColumnSpacing="5">
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Entry
+            x:Name="SpinningWidthField"
+            Keyboard="Numeric"
+            Grid.Column="0"
+            Grid.Row="0"
+            Placeholder="Weite" />
+
+        <Button
+            Grid.Column="1"
+            Grid.Row="0"
+            Clicked="HighlightButton_Clicked"
+            Text="Hervorheben" />
+
+        <StackLayout
+            Orientation="Horizontal"
+            Spacing="5"
+            Grid.Column="0"
+            Grid.Row="1">
+            <Entry 
+                x:Name="SpinningStartField"
+                HorizontalOptions="FillAndExpand"
+                Keyboard="Numeric"
+                Placeholder="Start" />
+            <Entry 
+                x:Name="SpinningEndField"
+                HorizontalOptions="FillAndExpand"
+                Keyboard="Numeric"
+                Placeholder="Ende" />
+        </StackLayout>
+
+        <Button
+            Grid.Column="1"
+            Grid.Row="1"
+            Clicked="HighlightSectionButton_Clicked"
+            Text="Sektion Hervorheben" />
+
+        <Entry 
+            x:Name="SpinningColorField"
+            Keyboard="Numeric"
+            Grid.Column="0"
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            Placeholder="Farbe" />
+
+        <Button
+            Grid.Column="0"
+            Grid.Row="3"
+            Clicked="EnableButton_Clicked"
+            Text="Einschalten" />
+
+        <Button
+            Grid.Column="1"
+            Grid.Row="3"
+            Clicked="DisableButton_Clicked"
+            Text="Ausschalten" />
+
+        <!-- Settings -->
+        <Label 
+            Grid.Column="0"
+            Grid.Row="4"
+            VerticalTextAlignment="Center"
+            Text="Geschwindigkeit" />
+
+        <Entry 
+            x:Name="SpinningSpeedField"
+            Keyboard="Numeric"
+            Grid.Column="1"
+            Grid.Row="4"
+            Placeholder="Geschwindigkeit"/>
+
+        <Label 
+            Grid.Column="0"
+            Grid.Row="5"
+            VerticalTextAlignment="Center"
+            Text="Richtung" />
+
+        <Entry 
+            x:Name="SpinningDirectionField"
+            Keyboard="Numeric"
+            Grid.Column="1"
+            Grid.Row="5"
+            Placeholder="Richtung"/>
+
+        <Label 
+            Grid.Column="0"
+            Grid.Row="6"
+            VerticalTextAlignment="Center"
+            Text="Hintergrund" />
+
+        <Entry 
+            x:Name="SpinningBackgroundField"
+            Keyboard="Numeric"
+            Grid.Column="1"
+            Grid.Row="6"
+            Placeholder="Hintergrund"/>
+
+        <Label 
+            Grid.Column="0"
+            Grid.Row="7"
+            VerticalTextAlignment="Center"
+            Text="Vordergrund" />
+
+        <Entry 
+            x:Name="SpinningForegroundField"
+            Keyboard="Numeric"
+            Grid.Column="1"
+            Grid.Row="7"
+            Placeholder="Vordergrund"/>
+
+        <Label 
+            Grid.Column="0"
+            Grid.Row="8"
+            VerticalTextAlignment="Center"
+            Text="Pixel pro Seg." />
+
+        <Entry 
+            x:Name="SpinningPixelPerSegmentField"
+            Keyboard="Numeric"
+            Grid.Column="1"
+            Grid.Row="8"
+            Placeholder="Pixel pro Seg."/>
+
+        <Label 
+            Grid.Column="0"
+            Grid.Row="9"
+            VerticalTextAlignment="Center"
+            Text="Seg. Anzahl" />
+
+        <Entry 
+            x:Name="SpinningSegmentCountField"
+            Keyboard="Numeric"
+            Grid.Column="1"
+            Grid.Row="9"
+            Placeholder="Seg. Anzahl"/>
+
+        <Button
+            Grid.Column="0"
+            Grid.Row="10"
+            Grid.ColumnSpan="2"
+            Clicked="UpdateButton_Clicked"
+            Text="Aktualisieren"/>
+    </Grid>
+
+</ContentView>

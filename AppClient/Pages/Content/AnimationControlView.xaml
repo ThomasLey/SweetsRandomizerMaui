@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppClient.Pages.Content.AnimationControlView">
+
+    <!-- Animation Lights -->
+    <VerticalStackLayout
+        Margin="5"
+        Spacing="15">
+
+        <VerticalStackLayout
+            Spacing="5">
+            <Label Text="Farbe"/>
+            <FlexLayout
+                JustifyContent="SpaceAround"
+                Wrap="Wrap">
+                <Button 
+                    Clicked="RedButton_Clicked"
+                    Text="Rot" />
+                <Button 
+                    Clicked="GreenButton_Clicked"
+                    Text="Grün" />
+                <Button 
+                    Clicked="BlueButton_Clicked"
+                    Text="Blau" />
+                <Button 
+                    Clicked="YellowButton_Clicked"
+                    Text="Gelb" />
+                <Button 
+                    Clicked="CyanButton_Clicked"
+                    Text="Türkis" />
+                <Button 
+                    Clicked="MagentaButton_Clicked"
+                    Text="Magenta" />
+                <Button 
+                    Clicked="OffButton_Clicked"
+                    Text="Auschalten" />
+                <Button 
+                    Clicked="OnButton_Clicked"
+                    Text="Einschalten" />
+            </FlexLayout>
+        </VerticalStackLayout>
+
+        <StackLayout
+            Orientation="Horizontal"
+            Spacing="5">
+            <Entry 
+                x:Name="AnimationColorField"
+                Keyboard="Numeric"
+                HorizontalOptions="FillAndExpand"
+                Placeholder="Bestimmte Farbe eingeben"/>
+            <Button 
+                Clicked="SetColorButton_Clicked"
+                Text="Setzen"/>
+        </StackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Animation:"/>
+            <Picker
+                x:Name="AnimationPicker"
+                SelectedIndexChanged="AnimationPicker_SelectedIndexChanged"
+                Title="Animation auswählen">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Statisch</x:String>
+                        <x:String>Einzeln</x:String>
+                        <x:String>Invertiert</x:String>
+                        <x:String>Nachziehend</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Geschwindigkeit"/>
+            <Slider
+                x:Name="AnimationSpeedSlider"
+                ValueChanged="AnimationSpeedSlider_ValueChanged"
+                DragCompleted="AnimationSpeedSlider_DragCompleted"
+                Minimum="0"
+                Maximum="6">
+            </Slider>
+            <Label 
+                x:Name="AnimationSpeedLabel"
+                HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label Text="Bewegungsmelder"/>
+            <Slider
+                x:Name="AnimationMoveSlider"
+                ValueChanged="AnimationMoveSlider_ValueChanged"
+                DragCompleted="AnimationMoveSlider_DragCompleted"
+                Minimum="0"
+                Maximum="60">
+            </Slider>
+            <Label 
+                x:Name="AnimationMoveLabel"
+                HorizontalTextAlignment="Center" />
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentView>
