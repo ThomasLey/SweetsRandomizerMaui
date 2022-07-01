@@ -1,9 +1,7 @@
-# SweetsRandomizerMaui
+## Eine App fÃ¼r das Steuern von SweetsRandomizer GerÃ¤ten
 
-## Eine App für das Steuern von SweetsRandomizer Geräten
-
-### Hauptmenü
-Jedes hinzugefügte Gerät wird in der Übersicht mitsamt Name, Hostadresse und Verbindungsstatus angezeigt.
+### HauptmenÃ¼
+Jedes hinzugefÃ¼gte GerÃ¤t wird in der Ãœbersicht mitsamt Name, Hostadresse und Verbindungsstatus angezeigt.
 Der Verbindungsstatus wird anhand einer Farbe verdeutlicht.
 
 ![OverviewPage](Assets/OverviewPage.png)
@@ -12,58 +10,58 @@ Der Verbindungsstatus wird anhand einer Farbe verdeutlicht.
 > Die Farben haben folgende Bedeutung:
 > - Rot -> Nicht erreichbar (Timeout oder gar nicht existent)
 > - Gelb -> Erreichbar, aber das Verhalten ist nicht dessen Kategorie entsprechend
-> - Grün -> Erreichbar und einsatzbereit
+> - GrÃ¼n -> Erreichbar und einsatzbereit
 
 ## Benutzerhandbuch
 
-### Hinzufügen eines Gerätes
-Zum hinzufügen eines neuen Geräts, sollten beide Endpunkte sich im selben Netzwerk befinden.
-Anschließend lässt sich durch das Drücken von "Gerät hinzufügen" ein neues Fenster öffnen, in dem das Gerät näher definiert werden muss.
+### HinzufÃ¼gen eines GerÃ¤tes
+Zum hinzufÃ¼gen eines neuen GerÃ¤ts, sollten beide Endpunkte sich im selben Netzwerk befinden.
+AnschlieÃŸend lÃ¤sst sich durch das DrÃ¼cken von "GerÃ¤t hinzufÃ¼gen" ein neues Fenster Ã¶ffnen, in dem das GerÃ¤t nÃ¤her definiert werden muss.
 
 ![AddModulePage](Assets/AddModulePage.png)
 
 > ## Achtung:
 > Bei dieser Funktion ist die Angabe von folgenden Informationen pflichtig:
-> - Gerätename -> Der Name des angezeigten Geräts - Wird für das Anzeigen des Geräts im Hauptmenü benötigt
-> - Host -> Die Adressbasis, die zum Gerät zeigt - Nötig für das Ansprechen des jeweiligen Gerätes
-> - Typ -> Die Kategorie in die das Gerät gehört - Für das Anzeigen und Nutzen der dementsprechenden Funktionen nötig
+> - GerÃ¤tename -> Der Name des angezeigten GerÃ¤ts - Wird fÃ¼r das Anzeigen des GerÃ¤ts im HauptmenÃ¼ benÃ¶tigt
+> - Host -> Die Adressbasis, die zum GerÃ¤t zeigt - NÃ¶tig fÃ¼r das Ansprechen des jeweiligen GerÃ¤tes
+> - Typ -> Die Kategorie in die das GerÃ¤t gehÃ¶rt - FÃ¼r das Anzeigen und Nutzen der dementsprechenden Funktionen nÃ¶tig
 >     - ```Hierbei gibt es die Auswahl aus 3 verschiedenen Kategorien: Segmented lights, Spinning lights & Webpage```
 
 ##
 
-### Steuern eines Geräts
-Zum steuern eines Geräts müssen Sie nur auf das jeweilige Gerät drücken.
-Je nach Typ und Verbindungsstatus, ändert sich auch die Ansicht.
+### Steuern eines GerÃ¤ts
+Zum steuern eines GerÃ¤ts mÃ¼ssen Sie nur auf das jeweilige GerÃ¤t drÃ¼cken.
+Je nach Typ und Verbindungsstatus, Ã¤ndert sich auch die Ansicht.
 
-#### Webpage Gerät
-Da die Kommunikation mit dem Webpage-Gerät einseitig ist, ist dementsprechend das Steuern des Gerätes nicht nötig.
-Diesbezüglich gibt es beim wechseln ins Steuerungsmenü keine Steuerungseinheiten.
+#### Webpage GerÃ¤t
+Da die Kommunikation mit dem Webpage-GerÃ¤t einseitig ist, ist dementsprechend das Steuern des GerÃ¤tes nicht nÃ¶tig.
+DiesbezÃ¼glich gibt es beim wechseln ins SteuerungsmenÃ¼ keine Steuerungseinheiten.
 
 ![ModuleControlPage](Assets/ModuleControlPage_WebpageView.png)
 
-#### Segmented-Light Gerät
-Die Steuerung eines Segmented-Light-Geräts lässt sich durch das Senden von einzelnen Befehlen verwirklichen.
-Nicht jeder Befehl benötigt alle Eingabefelder. Dementsprechend werden bei der Auswahl des Befehls, nur die nötigen Eingabefelder editierbar gemacht.
+#### Segmented-Light GerÃ¤t
+Die Steuerung eines Segmented-Light-GerÃ¤ts lÃ¤sst sich durch das Senden von einzelnen Befehlen verwirklichen.
+Nicht jeder Befehl benÃ¶tigt alle Eingabefelder. Dementsprechend werden bei der Auswahl des Befehls, nur die nÃ¶tigen Eingabefelder editierbar gemacht.
 
 ![ModuleControlPage](Assets/ModuleControlPage_SegmentedLightsView.png)
 
 > #### Information:
-> Folgende Befehle stehen bei den Segmented lights zur verfügung:
-> - Segment einschalten -> Lässt ein Segment (mehrere LEDs) mit der ausgewählten Farbe aufleuchten.
-> - Segment exklusiv einschalten -> Lässt ein Segment mit der ausgewählten Farbe aufleuchten. Alle anderen Segmente werden hierbei ausgeschaltet.
-> - Auf Hintergrundfarbe setzen -> Lässt alle Segmente mit der gesetzten Hintergrundfarbe aufleuchten.
-> - Hintergrundfarbe ändern -> Setzt die Hintergrundfarbe die bei der Funktion "Auf Hintergrundfarbe setzten" benutzt wird. Diese wird beim Neustart des Geräts zurückgesetzt.
-> - Alle Segmente einschalten -> Lässt alle Segmente mit der gegebenen Farbe aufleuchten.
+> Folgende Befehle stehen bei den Segmented lights zur verfÃ¼gung:
+> - Segment einschalten -> LÃ¤sst ein Segment (mehrere LEDs) mit der ausgewÃ¤hlten Farbe aufleuchten.
+> - Segment exklusiv einschalten -> LÃ¤sst ein Segment mit der ausgewÃ¤hlten Farbe aufleuchten. Alle anderen Segmente werden hierbei ausgeschaltet.
+> - Auf Hintergrundfarbe setzen -> LÃ¤sst alle Segmente mit der gesetzten Hintergrundfarbe aufleuchten.
+> - Hintergrundfarbe Ã¤ndern -> Setzt die Hintergrundfarbe die bei der Funktion "Auf Hintergrundfarbe setzten" benutzt wird. Diese wird beim Neustart des GerÃ¤ts zurÃ¼ckgesetzt.
+> - Alle Segmente einschalten -> LÃ¤sst alle Segmente mit der gegebenen Farbe aufleuchten.
 > - Alle Segmente ausschalten -> Schaltet alle Segmente aus.
 
-#### Spinning-Light Gerät
-Spinning-Light-Geräte besitzen im Gegensatz zu den Segmented lights, keine einfache Kommandostruktur.
-Hierbei werden Befehle mittels verschiedener Knöpfe gesendet.
+#### Spinning-Light GerÃ¤t
+Spinning-Light-GerÃ¤te besitzen im Gegensatz zu den Segmented lights, keine einfache Kommandostruktur.
+Hierbei werden Befehle mittels verschiedener KnÃ¶pfe gesendet.
 
 ![ModuleControlPage](Assets/ModuleControlPage_SpinningLightsView.png)
 
 > #### Information:
-> Folgende Funktionen stehen bei den Spinning lights zur verfügung:
+> Folgende Funktionen stehen bei den Spinning lights zur verfÃ¼gung:
 > - Hebe ein vordefiniertes Segment mit der gegebenen Weite hervor.
 > - Hebe eine Reihe an LEDs mit den gegebenen Grenzen hervor.
 > - Schalte alle Segmente mit der gegebenen Farbe ein.
@@ -73,12 +71,12 @@ Hierbei werden Befehle mittels verschiedener Knöpfe gesendet.
 > - Stelle die Hintergrundfarbe ein.
 > - Stelle die Vordergrundfarbe ein.
 > - Stelle ein, wie viele Pixel ein Segment besitzt.
-> - Stelle ein, wie viele Segmente das Gerät besitzt.
+> - Stelle ein, wie viele Segmente das GerÃ¤t besitzt.
 
-#### Animated-Light Gerät
-Im gegensatz zu den anderen Geräten, sind Animated-Light-Geräte nicht sehr abstrakt entworfen.
-Hierbei können Farben mithilfe von vordefinierten Knöpfen oder unter eigenen Angaben geändert werden.
-Anschließend bieten Slider und Dropdown-Menüs die Option, eine Animation auszuwählen und dessen Geschwindigkeit zu setzen.
-Ebenso gibt es bei Animated-Light-Geräten einen zusätzlichen Bewegungsmelder, wobei die Dauer ebenso mit einem Slider definiert werden kann.
+#### Animated-Light GerÃ¤t
+Im gegensatz zu den anderen GerÃ¤ten, sind Animated-Light-GerÃ¤te nicht sehr abstrakt entworfen.
+Hierbei kÃ¶nnen Farben mithilfe von vordefinierten KnÃ¶pfen oder unter eigenen Angaben geÃ¤ndert werden.
+AnschlieÃŸend bieten Slider und Dropdown-MenÃ¼s die Option, eine Animation auszuwÃ¤hlen und dessen Geschwindigkeit zu setzen.
+Ebenso gibt es bei Animated-Light-GerÃ¤ten einen zusÃ¤tzlichen Bewegungsmelder, wobei die Dauer ebenso mit einem Slider definiert werden kann.
 
 ![ModuleControlPage](Assets/ModuleControlPage_AnimatedLightsView.png)
