@@ -44,50 +44,47 @@ namespace AppClient.DataStore
             SaveModules();
         }
 
-        public static async Task CheckConnectionStatusAsync(params ModuleInfo[] modules)
+        public static async Task CheckConnectionStatusAsync(ModuleInfo module, int timeout = 5)
         {
             using HttpClient client = new HttpClient();
-            client.Timeout = TimeSpan.FromSeconds(5);
+            client.Timeout = TimeSpan.FromSeconds(timeout);
 
-            foreach (ModuleInfo module in modules)
+            try
             {
                 module.ConnectionStatus = ConnectionStatus.Pending;
 
-                try
+                using HttpResponseMessage message = await client.GetAsync(module.Host).ConfigureAwait(false);
+                string response = await message.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                if (!message.IsSuccessStatusCode)
+                    throw new Exception(response);
+                else
                 {
-                    using HttpResponseMessage message = await client.GetAsync(module.Host).ConfigureAwait(false);
-                    string response = await message.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    module.ConnectionMessage = response;
 
-                    if (!message.IsSuccessStatusCode)
-                        throw new Exception(response);
-                    else
-                    {
-                        module.ConnectionMessage = response;
+                    switch (module.Type)
+                    { // Connection check
+                        case ModuleType.Webpage:
+                            module.ConnectionStatus = response.StartsWith("<html>") ?
+                                ConnectionStatus.Online : ConnectionStatus.CheckConnection;
+                            break;
+                        case ModuleType.SegmentedLights:
+                        case ModuleType.SpinningLights:
+                        case ModuleType.AnimationLights:
+                            module.ConnectionStatus = response.StartsWith("{") ?
+                                ConnectionStatus.Online : ConnectionStatus.CheckConnection;
+                            break;
 
-                        switch (module.Type)
-                        { // Connection check
-                            case ModuleType.Webpage:
-                                module.ConnectionStatus = response.StartsWith("<html>") ?
-                                    ConnectionStatus.Online : ConnectionStatus.CheckConnection;
-                                break;
-                            case ModuleType.SegmentedLights:
-                            case ModuleType.SpinningLights:
-                            case ModuleType.AnimationLights:
-                                module.ConnectionStatus = response.StartsWith("{") ?
-                                    ConnectionStatus.Online : ConnectionStatus.CheckConnection;
-                                break;
-
-                            default:
-                                throw new NotImplementedException();
-                        }
+                        default:
+                            throw new NotImplementedException();
                     }
                 }
-                catch (Exception ex)
-                {
-                    module.ConnectionMessage = string.IsNullOrWhiteSpace(ex.Message) ?
-                        "No Message!" : ex.Message;
-                    module.ConnectionStatus = ConnectionStatus.Offline;
-                }
+            }
+            catch (Exception ex)
+            {
+                module.ConnectionMessage = string.IsNullOrWhiteSpace(ex.Message) ?
+                    "No Message!" : ex.Message;
+                module.ConnectionStatus = ConnectionStatus.Offline;
             }
         }
 

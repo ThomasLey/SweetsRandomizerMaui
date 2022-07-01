@@ -1,4 +1,5 @@
 ﻿using AppClient.DataStore;
+using System.Reflection;
 using ModuleInfo = AppClient.DataStore.ModuleInfo;
 
 namespace AppClient.Pages
@@ -10,10 +11,9 @@ namespace AppClient.Pages
         {
             InitializeComponent();
 
-            // ignore warning
-            ModuleStore.CheckConnectionStatusAsync(
-                ModuleStore.Modules.ToArray()
-            );
+            // Connect to all modules at once
+            foreach (ModuleInfo module in ModuleStore.Modules)
+                Task.Run(() => ModuleStore.CheckConnectionStatusAsync(module));
         }
 
         protected override void OnAppearing()
